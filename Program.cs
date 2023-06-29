@@ -45,7 +45,7 @@ class Program
     private static decimal ObterSalarioBruto()
     {
         Console.WriteLine("Informe um valor válido para o salário:");
-        decimal salarioBruto = 0;
+        decimal salarioBruto;
         if (decimal.TryParse(Console.ReadLine(), out decimal resultSalarioBruto))
             salarioBruto = resultSalarioBruto;
         else
