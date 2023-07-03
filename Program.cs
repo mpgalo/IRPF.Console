@@ -1,7 +1,6 @@
 ﻿namespace IRPF.Console;
 using System;
-
-class Program
+public class Program
 {
     static void Main(string[] args)
     {
@@ -20,17 +19,7 @@ class Program
         {
             string? contribuinte = ObterContribuinte();
             decimal salarioBruto = ObterSalarioBruto();
-
-            decimal desconto = 0;
-            if (salarioBruto >= 1903.99m && salarioBruto <= 2826.65m)
-                desconto = salarioBruto * 0.075m - 142.80m;
-            else if (salarioBruto >= 2826.66m && salarioBruto <= 3751.05m)
-                desconto = salarioBruto * 0.15m - 354.80m;
-            else if (salarioBruto >= 3751.06m && salarioBruto <= 4664.68m)
-                desconto = salarioBruto * 0.225m - 636.13m;
-            else if (salarioBruto > 4664.68m)
-                desconto = salarioBruto * 0.275m - 869.36m;
-
+            decimal desconto = CalcularDesconto(salarioBruto);
             decimal salarioLiquido = salarioBruto - desconto;
 
             Console.WriteLine($"Nome do Contribuinte: {contribuinte}");
@@ -40,6 +29,20 @@ class Program
 
             contador++;
         }
+    }
+
+    public static decimal CalcularDesconto(decimal salarioBruto)
+    {
+        decimal desconto = 0;
+        if (salarioBruto >= 1903.99m && salarioBruto <= 2826.65m)
+            desconto = salarioBruto * 0.075m - 142.80m;
+        else if (salarioBruto >= 2826.66m && salarioBruto <= 3751.05m)
+            desconto = salarioBruto * 0.15m - 354.80m;
+        else if (salarioBruto >= 3751.06m && salarioBruto <= 4664.68m)
+            desconto = salarioBruto * 0.225m - 636.13m;
+        else if (salarioBruto > 4664.68m)
+            desconto = salarioBruto * 0.275m - 869.36m;
+        return desconto;
     }
 
     private static decimal ObterSalarioBruto()
